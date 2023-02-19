@@ -15,6 +15,12 @@ services:
       # - ./docker/db/data:/var/lib/postgresql/data:rw
 ###< doctrine/doctrine-bundle ###
 
+  app:
+    image: alexredcross16113141/php-docker:1.0
+    container_name: app
+    volumes:
+      - .:/var/www/html/
+
 volumes:
 ###> doctrine/doctrine-bundle ###
   database_data:
