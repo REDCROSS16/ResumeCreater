@@ -1,0 +1,17 @@
+includes:
+    # Doctrine
+    - vendor/phpstan/phpstan-doctrine/extension.neon
+    # PHPUnit
+    - vendor/phpstan/phpstan-phpunit/extension.neon
+    - vendor/phpstan/phpstan-phpunit/rules.neon
+    #Symfony
+    - vendor/phpstan/phpstan-symfony/extension.neon
+    #Webmozart
+    - vendor/phpstan/phpstan-webmozart-assert/extension.neon
+parameters:
+    checkMissingIterableValueType: false
+    checkGenericClassInNonGenericObjectType: false
+    level: max
+    paths:
+        - src
+        - tests
