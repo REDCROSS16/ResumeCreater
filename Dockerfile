@@ -1,6 +1,6 @@
 ARG NODE_VERSION=14
 
-FROM alexredcross16113141/php-docker as web-app
+FROM alexredcross16113141/php-docker:1.0 as web-app
 
 WORKDIR "/srv/www"
 
