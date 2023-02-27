@@ -21,6 +21,8 @@
     "toastr": "^2.1.4"
   },
   "devDependencies": {
+    "@babel/core": "^7.21.0",
+    "@babel/preset-env": "^7.20.2",
     "@symfony/webpack-encore": "^4.2.0",
     "webpack-notifier": "^1.15.0"
   },

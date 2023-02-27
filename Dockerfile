@@ -10,9 +10,9 @@ FROM node:${NODE_VERSION}-alpine AS nodejs
 
 WORKDIR /srv/www
 
-COPY .docker/bin/nodejs-entrypoint /usr/local/bin/docker-entrypoint
+#COPY .docker/bin/nodejs-entrypoint /usr/local/bin/docker-entrypoint
 
-ENTRYPOINT ["docker-entrypoint"]
+#ENTRYPOINT ["docker-entrypoint"]
 
 CMD ["yarn", "watch"]
 
