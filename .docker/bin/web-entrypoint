@@ -1,0 +1,29 @@
+#!/bin/sh
+set -e
+
+# Create DB and load data
+until php bin/console doctrine:query:sql "selectk 1" >/dev/null 2>&1; do
+  (echo >&2 "Waiting for DB to be ready...")
+  sleep 1
+done
+
+#php bin/console doctrine:database:create --if-not-exists --env=${APP_ENV}
+#php bin/console doctrine:migrations:migrate --no-interaction --env=${APP_ENV}
+# TODO: uncomment this when fixtures will be exist.
+# php bin/console doctrine:fixtures:load --append --env=${APP_ENV}
+
+# Start Hack (changing permissions after create files on the host)
+DIR_EXAMPLE="${WORKDIR}/public"
+USER=www-data
+GROUP=www-data
+USER_ID=$(stat -c '%u' ${DIR_EXAMPLE})
+GROUP_ID=$(stat -c '%g' ${DIR_EXAMPLE})
+
+echo ${USER_ID} > /root/uid
+echo ${GROUP_ID} > /root/gid
+usermod -u ${USER_ID} ${USER}
+groupmod -g ${GROUP_ID} ${GROUP}
+chown -R ${USER}:${GROUP} ${WORKDIR}/var ${WORKDIR}/public ${WORKDIR}/vendor
+# End Hack
+
+exec lamp-entrypoint "$@"
