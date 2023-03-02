@@ -5,11 +5,20 @@ services:
         container_name: web-resume
         build:
             dockerfile: .docker/nginx/Dockerfile
+        depends_on:
+            - php
+        volumes:
+            - .:/srv/www:rw,cached
+            - ./var:/srv/www/var:rw
+            - ./public:/srv/www/public:rw,delegated
         image: nginx:latest
         ports:
-            - "80:80"
+            - "8088:80"
 
-
+    php:
+        container_name: php-resume
+        build:
+            dockerfile: .docker/php/Dockerfile
 
 #
 #    web:

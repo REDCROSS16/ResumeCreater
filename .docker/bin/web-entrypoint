@@ -1,6 +1,12 @@
 #!/bin/sh
 set -e
 
+# Install project
+#composer install --prefer-dist --no-interaction --optimize-autoloader --no-scripts
+php bin/console assets:install --no-interaction
+php bin/console cache:warmup --no-interaction --no-optional-warmers
+php bin/console lexik:jwt:generate-keypair --skip-if-exists -n
+
 # Create DB and load data
 until php bin/console doctrine:query:sql "selectk 1" >/dev/null 2>&1; do
   (echo >&2 "Waiting for DB to be ready...")
