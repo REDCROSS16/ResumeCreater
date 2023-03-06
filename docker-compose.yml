@@ -6,7 +6,7 @@ services:
         build:
             dockerfile: .docker/nginx/Dockerfile
         depends_on:
-            - php
+            - php-fpm81
         volumes:
             - .:/srv/www:rw,cached
             - ./var:/srv/www/var:rw
@@ -14,11 +14,19 @@ services:
         image: nginx:latest
         ports:
             - "8088:80"
+        networks:
+            - internal
 
     php:
         container_name: php-resume
         build:
             dockerfile: .docker/php/Dockerfile
+        networks:
+            - internal
+
+networks:
+    internal:
+        driver: bridge
 
 #
 #    web:
