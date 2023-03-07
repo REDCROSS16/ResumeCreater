@@ -2,25 +2,39 @@ version: '3.6'
 
 services:
     web:
-        container_name: web-resume
+        container_name: web
         build:
             dockerfile: .docker/nginx/Dockerfile
         depends_on:
             - php-fpm81
         volumes:
-            - .:/srv/www:rw,cached
-            - ./var:/srv/www/var:rw
-            - ./public:/srv/www/public:rw,delegated
+            - .:/var/www:rw,cached
+            - ./var:/var/www/var:rw
+            - ./public:/var/www/public:rw,delegated
         image: nginx:latest
         ports:
-            - "8088:80"
+            - "80:80"
+            - "443:443"
         networks:
             - internal
 
-    php:
-        container_name: php-resume
+    php-fpm81:
+        image: php-fpm:8.1
         build:
             dockerfile: .docker/php/Dockerfile
+        container_name: php-fpm81
+        volumes:
+            - .:/var/www:rw,cached
+            - ./var:/var/www/var:rw
+            - ./public:/var/www/public:rw,delegated
+        ports:
+            - 7788:7788
+            - 7790:7790
+#        volumes:
+#            - ./php/8.1/configs/php.ini:/usr/local/etc/php/conf.d/90-custom.ini
+#        networks:
+#            webpay:
+#                ipv4_address: 10.5.0.12
         networks:
             - internal
 
