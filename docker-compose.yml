@@ -30,54 +30,26 @@ services:
         ports:
             - 7788:7788
             - 7790:7790
-#        volumes:
-#            - ./php/8.1/configs/php.ini:/usr/local/etc/php/conf.d/90-custom.ini
-#        networks:
-#            webpay:
-#                ipv4_address: 10.5.0.12
         networks:
             - internal
+
+
+    nodejs:
+        container_name: nodejs
+        build:
+            context: .
+            target: nodejs
+        depends_on:
+            - web
+        environment:
+            WEB_HOST: resume-creater
+            WEB_PORT: 80
+        volumes:
+            - .:/srv/www:rw,cached
+            - ./public:/srv/www/public:rw,delegated
+        ports:
+            - "35729:35729"
 
 networks:
     internal:
         driver: bridge
-
-#
-#    web:
-#        container_name: web
-#        hostname: resume-creater
-#        build:
-#            context: .
-#            target: web-app
-#            args:
-#                XDEBUG: 1
-#        environment:
-#          XDEBUG_CONFIG: "client_host=192.168.115.1"
-#          # App environment
-#          APP_ENV: dev
-#        volumes:
-#          - .:/srv/www:rw,cached
-#          - ./var:/srv/www/var:rw
-#          - ./public:/srv/www/public:rw,delegated
-#        ports:
-#          - "8088:80"
-#
-#    nodejs:
-#        container_name: nodejs
-#        build:
-#            context: .
-#            target: nodejs
-#        depends_on:
-#            - web
-#        environment:
-#            WEB_HOST: resume-creater
-#            WEB_PORT: 80
-#        volumes:
-#            - .:/srv/www:rw,cached
-#            - ./public:/srv/www/public:rw,delegated
-#        ports:
-#            - "35729:35729"
-#    app:
-#        container_name: php
-#        build:
-#            target: php-web
