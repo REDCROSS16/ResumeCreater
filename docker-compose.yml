@@ -50,6 +50,20 @@ services:
         ports:
             - "35729:35729"
 
+    database:
+        container_name: mysql-resume
+        image: mysql:latest
+        environment:
+            POSTGRES_USER: root
+            POSTGRES_PASSWORD: root
+            POSTGRES_DB: resume
+        volumes:
+            - ./.docker/.mysql-data:/var/lib/mysql/data:rw,delegated
+        ports:
+            -  "3306:3306"
+        networks:
+            - internal
+
 networks:
     internal:
         driver: bridge
