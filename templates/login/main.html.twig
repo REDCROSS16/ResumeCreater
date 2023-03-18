@@ -2,6 +2,10 @@
 
 {% block title %} Login {% endblock %}
 
+{% block stylesheets %}
+    {{ encore_entry_link_tags('login') }}
+{% endblock %}
+
 {% block body %}
     {% include 'login_form.html.twig' %}
 {% endblock %}
