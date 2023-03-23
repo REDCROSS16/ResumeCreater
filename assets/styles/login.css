@@ -7,6 +7,14 @@
     box-sizing: border-box;
 }
 
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url("../images/background.jpg") no-repeat;
+}
+
 header {
     position: fixed;
     top: 0;
@@ -46,7 +54,14 @@ header {
     border-radius: 5px;
     left: 0;
     bottom: -6px;
+    transform-origin: right;
     transform: scaleX(0);
+    transition: transform .5s;
+}
+
+.navigation a:hover::after {
+    transform-origin: left;
+    transform: scaleX(1);
 }
 
 .navigation .btn-login-popup {
