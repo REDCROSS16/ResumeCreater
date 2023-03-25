@@ -14,6 +14,7 @@ body {
     min-height: 100vh;
     background: url("../images/background.jpg") no-repeat;
     background-size: cover;
+    background-position: center;
 }
 
 header {
@@ -22,7 +23,6 @@ header {
     left: 0;
     width: 100%;
     padding: 20px 100px;
-    background: red;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -84,4 +84,24 @@ header {
 .navigation .btn-login-popup:hover {
     background: #fff;
     color: #162938;
+}
+
+.wrapper {
+    position: relative;
+    width: 400px;
+    height: 440px;
+    background: transparent;
+    border: 2px solid rbga(255,255,255,.5);
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0,0,0,.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper .form-box {
+
 }
