@@ -3,11 +3,14 @@
 {% block title %} Login {% endblock %}
 
 {% block stylesheets %}
-    {{ encore_entry_link_tags('login') }}
+    {{ encore_entry_link_tags('login-css') }}
+{#    <link rel="stylesheet" href="assets/styles/login.css">#}
 {% endblock %}
 
 {% block body %}
-    {% include 'login_form.html.twig' %}
+    {% include 'login/navigation.html.twig' %}
+    {% include 'login/login-wrapper.html.twig' %}
+    {% include 'login/register-wrapper.html.twig' %}
 {% endblock %}
 
 {% block javascripts %}
