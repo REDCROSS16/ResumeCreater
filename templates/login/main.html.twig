@@ -9,8 +9,12 @@
 
 {% block body %}
     {% include 'login/navigation.html.twig' %}
-    {% include 'login/login-wrapper.html.twig' %}
-    {% include 'login/register-wrapper.html.twig' %}
+
+    <div class="wrapper">
+        <span class="icon-close"><ion-icon name="close"></ion-icon></span>
+        {% include 'login/login-wrapper.html.twig' %}
+        {% include 'login/register-wrapper.html.twig' %}
+    </div>
 {% endblock %}
 
 {% block javascripts %}
