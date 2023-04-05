@@ -1,24 +1,24 @@
 
 <div class="form-box register">
     <h2>Registration</h2>
-    <form action="#">
+    <form action="{{ registerActionUrl }}">
         <div class="input-box">
             <span class="icon"><ion-icon name="person"></ion-icon></span>
-            <input type="text" required>
+            <input type="text" required name="name">
             <label for="">Username</label>
         </div>
         <div class="input-box">
             <span class="icon"><ion-icon name="mail"></ion-icon></span>
-            <input type="email" required>
+            <input type="email" required name="mail">
             <label for="">Email</label>
         </div>
         <div class="input-box">
             <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
-            <input type="password" required>
+            <input type="password" required name="password">
             <label for="">Password</label>
         </div>
         <div class="remember-forgot">
-            <label for=""><input type="checkbox">I agree to the terms & conditions</label>
+            <label for=""><input type="checkbox" name="agreement">I agree to the terms & conditions</label>
         </div>
         <button type="submit" class="btn">Register</button>
 
