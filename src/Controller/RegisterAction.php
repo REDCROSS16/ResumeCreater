@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 
-#[Route('/register', name: 'register')]
+#[Route('/register', name: 'register', methods: ['POST'])]
 class RegisterAction extends AbstractController
 {
     public function __invoke(Request $request)
