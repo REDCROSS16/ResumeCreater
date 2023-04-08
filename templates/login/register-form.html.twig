@@ -1,29 +1,27 @@
-{#{{ form_start(registerForm) }}#}
 <div class="form-box register">
     <h2>Registration</h2>
     <form action="{{ registerActionUrl }}" method="post">
         <div class="input-box">
             <span class="icon"><ion-icon name="person"></ion-icon></span>
-{#            <input type="text" required name="name">#}
+            {{ form_errors(registerForm.name) }}
             {{ form_widget(registerForm.name) }}
-            <label for="">Username</label>
+            {{ form_label(registerForm.name) }}
         </div>
         <div class="input-box">
             <span class="icon"><ion-icon name="mail"></ion-icon></span>
-{#            <input type="email" required name="mail">#}
+            {{ form_errors(registerForm.email) }}
             {{ form_widget(registerForm.email) }}
             {{ form_label(registerForm.email) }}
-{#            <label for="">Email</label>#}
         </div>
         <div class="input-box">
             <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
-{#            <input type="password" required name="password">#}
+            {{ form_errors(registerForm.password) }}
             {{ form_widget(registerForm.password) }}
+            {{ form_label(registerForm.password) }}
             <label for="">Password</label>
         </div>
         <div class="remember-forgot">
             <label for="">
-{#                <input type="checkbox" name="agreement">I agree to the terms & conditions</label>#}
                 {{ form_label(registerForm.agreement) }}
                 {{ form_widget(registerForm.agreement) }}
         </div>
@@ -38,4 +36,3 @@
         </div>
     </form>
 </div>
-{#{{ form_end(registerForm) }}#}

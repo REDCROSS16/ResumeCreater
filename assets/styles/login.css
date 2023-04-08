@@ -182,8 +182,10 @@ header {
 }
 
 .input-box label:focus~label,
+.input-box label:hover~label,
 .input-box label:valid~label {
     top: -5px;
+    transform: translateY(5px);
 }
 
 
