@@ -15,7 +15,6 @@ class RegisterAction extends AbstractController
 {
     public function __invoke(Request $request, EntityManagerInterface $entityManager): Response
     {
-        $data = $request->request->all();
         $user = new User();
         $form = $this->createForm(RegisterFormType::class, $user);
 

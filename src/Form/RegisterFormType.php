@@ -31,8 +31,10 @@ class RegisterFormType extends AbstractType
                 ]
             ])
             ->add('agreement', CheckboxType::class,
-                ['mapped' => false,
-                    'attr' => [
+                [
+                    'mapped'   => false,
+                    'required' => true,
+                    'attr'     => [
                         'value' => 'I agree to the terms & conditions'
                     ]])
             ->add('Register', SubmitType::class)
