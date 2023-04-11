@@ -15,15 +15,13 @@ class LoginAction extends AbstractController
     public function __invoke(Request $request): Response
     {
         $user = new User();
-        $loginForm = $this->createForm(LoginFormType::class, $user);
-        $data = $request->query->all();
-        $loginForm->submit($data);
+        $form = $this->createForm(LoginFormType::class, $user);
 
-        dd($request);
-        if ($loginForm->isValid() && $loginForm->isSubmitted()) {
-            dd($user);
+        $form->handleRequest($request);
+        if ($form->isValid() && $form->isSubmitted()) {
+            return $this->redirect('home');
         }
 
-        dd(1);
+        return $this->redirect('/');
     }
 }

@@ -23,7 +23,9 @@ class RegisterAction extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            $this->redirect('home');
+            return $this->redirect('home');
         }
+
+        return $this->redirect('/');
     }
 }

@@ -14,8 +14,9 @@ class ShowFormsAction extends AbstractController
     {
         $registerForm = $this->createForm(RegisterFormType::class);
 
-            return $this->render('login/main.html.twig', [
-                'registerForm' =>   $registerForm,
+            return $this->render('login/main.html.twig',
+                    [
+                'registerForm'      =>   $registerForm,
                 'loginActionUrl'    => $this->generateUrl('login'),
                 'registerActionUrl' => $this->generateUrl('register')
         ]);
