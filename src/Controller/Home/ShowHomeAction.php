@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\Controller\Home;
 
@@ -11,8 +11,9 @@ class ShowHomeAction extends AbstractController
     public function __invoke()
     {
         $title = 'home page';
+
         return $this->render('home/main.html.twig', [
-            'title' => $title
+            'title' => $title,
         ]);
     }
 }

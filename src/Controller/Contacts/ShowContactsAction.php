@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\Controller\Contacts;
 
@@ -11,6 +11,7 @@ class ShowContactsAction extends AbstractController
     public function __invoke()
     {
         $title = 'Contacts';
+
         return $this->render('contacts/main.html.twig', [
             'title' => $title,
         ]);

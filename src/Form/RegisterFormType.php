@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\Form;
 
@@ -19,24 +19,26 @@ class RegisterFormType extends AbstractType
         $builder
             ->add('name', TextType::class, [
                 'required' => true,
-
             ])
             ->add('email', EmailType::class, [
                 'required' => true,
             ])
             ->add('password', PasswordType::class, [
                 'required' => true,
-                'attr' => [
-                    'minlength' => 6
-                ]
+                'attr'     => [
+                    'minlength' => 6,
+                ],
             ])
-            ->add('agreement', CheckboxType::class,
+            ->add(
+                'agreement',
+                CheckboxType::class,
                 [
                     'mapped'   => false,
                     'required' => true,
                     'attr'     => [
-                        'value' => 'I agree to the terms & conditions'
-                    ]])
+                        'value' => 'I agree to the terms & conditions',
+                    ]]
+            )
             ->add('Register', SubmitType::class)
         ;
     }
@@ -44,8 +46,8 @@ class RegisterFormType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => User::class,
-            'csrf_protection' => false
+            'data_class'      => User::class,
+            'csrf_protection' => false,
         ]);
     }
 }

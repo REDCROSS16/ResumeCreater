@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\Entity;
 
@@ -31,6 +31,7 @@ class User implements UserInterface
     {
         return $this->password;
     }
+
     public function setPassword(?string $password): void
     {
         $this->password = $password;
@@ -42,7 +43,7 @@ class User implements UserInterface
         // guarantee every user at least has ROLE_USER
         $roles[] = 'ROLE_USER';
 
-        return array_unique($roles);
+        return \array_unique($roles);
     }
 
     public function setRoles(array $roles): self
@@ -82,7 +83,7 @@ class User implements UserInterface
     }
 
     /**
-     * The public representation of the user (e.g. a username, an email address, etc.)
+     * The public representation of the user (e.g. a username, an email address, etc.).
      *
      * @see UserInterface
      */
@@ -91,7 +92,7 @@ class User implements UserInterface
         return (string) $this->email;
     }
 
-    public function eraseCredentials()
+    public function eraseCredentials(): void
     {
     }
 }
