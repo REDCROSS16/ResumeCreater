@@ -9,9 +9,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+#[Route('/login', name: 'login', methods: ['POST', 'GET'])]
 class LoginAction extends AbstractController
 {
-    #[Route('/login', name: 'login')]
     public function __invoke(Request $request): Response
     {
         $user = new User();
